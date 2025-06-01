@@ -18,6 +18,10 @@ services:
   postgres:
     restart: always
     image: postgres:latest
+    environment:
+      - POSTGRES_USER=payload
+      - POSTGRES_PASSWORD=payload
+      - POSTGRES_DB=payload
     volumes:
       - pgdata:/var/lib/postgresql/data
     ports:
