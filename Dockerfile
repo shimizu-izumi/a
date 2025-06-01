@@ -11,6 +11,7 @@ WORKDIR /app
 
 # Install dependencies based on the preferred package manager
 COPY package.json pnpm-lock.yaml* ./
+RUN npm install -g corepack@latest
 RUN corepack enable pnpm && pnpm i --frozen-lockfile
 
 
@@ -25,6 +26,7 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
+RUN npm install -g corepack@latest
 RUN corepack enable pnpm && pnpm run build
 
 # Production image, copy all the files and run next
