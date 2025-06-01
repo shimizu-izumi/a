@@ -5,6 +5,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    networks:
+      - payload
     ports:
       - '3000:3000'
     depends_on:
@@ -15,6 +17,8 @@ services:
   postgres:
     restart: always
     image: postgres:latest
+    networks:
+      - payload
     environment:
       - POSTGRES_USER=payload
       - POSTGRES_PASSWORD=payload
@@ -24,3 +28,7 @@ services:
 
 volumes:
   pgdata:
+
+networks:
+  payload:
+    external: false
